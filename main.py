@@ -8,11 +8,7 @@ from objects import Human, Nut, Wanderer, Participant, Princess
 
 drosselmeyer = Human('Дроссельмейер')
 astronom = Human('Астроном')
-krakatuk = Nut()
-
-rumor = 'Возвращение путешественников'  # слух
-if rumor:
-	dispositions = True  # Когда пущен слух, начинаются приготовления
+krakatuk = Nut()  # самый твердый орех Кракатук
 
 wanderers = [Wanderer(name=i.name, things=[krakatuk]) for i in (drosselmeyer, astronom)]  # путешественники
 
