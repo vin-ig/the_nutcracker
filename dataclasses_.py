@@ -45,9 +45,6 @@ class PartOfBody:
 class Beard(PartOfBody):
 	color: List[Color]
 
-	class Meta:
-		unknown = marshmallow.EXCLUDE
-
 
 @dataclass
 class Arm(PartOfBody):
@@ -59,14 +56,8 @@ class Head(PartOfBody):
 	appearance: List[Appearance]
 	beard: Beard
 
-	class Meta:
-		unknown = marshmallow.EXCLUDE
-
 
 @dataclass
 class Body(PartOfBody):
 	head: Head
 	arm: Arm
-
-	class Meta:
-		unknown = marshmallow.EXCLUDE
