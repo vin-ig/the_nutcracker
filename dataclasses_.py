@@ -34,8 +34,15 @@ class Size(enum.Enum):
 
 
 @dataclass
-class Beard:
+class PartOfBody:
 	size: List[Size]
+
+	class Meta:
+		unknown = marshmallow.EXCLUDE
+
+
+@dataclass
+class Beard(PartOfBody):
 	color: List[Color]
 
 	class Meta:
@@ -43,16 +50,12 @@ class Beard:
 
 
 @dataclass
-class Arm:
-	size: List[Size]
-
-	class Meta:
-		unknown = marshmallow.EXCLUDE
+class Arm(PartOfBody):
+	pass
 
 
 @dataclass
-class Head:
-	size: List[Size]
+class Head(PartOfBody):
 	appearance: List[Appearance]
 	beard: Beard
 
@@ -61,10 +64,9 @@ class Head:
 
 
 @dataclass
-class Body:
+class Body(PartOfBody):
 	head: Head
 	arm: Arm
-	size: List[Size]
 
 	class Meta:
 		unknown = marshmallow.EXCLUDE

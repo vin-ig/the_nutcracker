@@ -4,7 +4,7 @@ from dataclasses_ import Mood, Body
 from exceptions import BrokenTeethError
 
 
-class Human:
+class Person:
 	_mood: Mood
 	_body: Body
 
@@ -24,7 +24,7 @@ class Human:
 		self._mood = mood
 
 
-class Participant(Human):
+class Participant(Person):
 	def __init__(self, name: str, damage: int):
 		super().__init__(name)
 		self._damage = damage
@@ -37,7 +37,7 @@ class Participant(Human):
 		return f'Желающий разгрызть орех {self.name}'
 
 
-class Princess(Human):
+class Princess(Person):
 	def __init__(self, name: str):
 		super().__init__(name)
 		self._spouse: Optional[Participant] = None
@@ -61,12 +61,12 @@ class Princess(Human):
 		return f'Принцесса {self.name}'
 
 
-class Wanderer(Human):
+class Wanderer(Person):
 	def __init__(self, name: str, things: List[Any]):
 		super().__init__(name)
 		self._things = things
 
-	def see(self, object: Human):
+	def see(self, object: Person):
 		pass
 
 	def __repr__(self):
@@ -74,10 +74,10 @@ class Wanderer(Human):
 
 
 class Nut:
-	def __init__(self):
+	def __init__(self, hp: int):
+		self._hp = hp  # Условные очки прочности скорлупы
 		self._nut_shell: bool = True
 		self._cracker: Optional[Participant] = None
-		self._hp: int = 100  # Условные очки прочности скорлупы
 
 	def crack(self, object: Participant):
 		if object.damage > self._hp:

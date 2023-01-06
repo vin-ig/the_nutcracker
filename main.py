@@ -4,11 +4,11 @@ import marshmallow_dataclass
 
 from dataclasses_ import Body, Mood
 from exceptions import BrokenTeethError
-from objects import Human, Nut, Wanderer, Participant, Princess
+from objects import Person, Nut, Wanderer, Participant, Princess
 
-drosselmeyer = Human('Дроссельмейер')
-astronom = Human('Астроном')
-krakatuk = Nut()  # самый твердый орех Кракатук
+drosselmeyer = Person('Дроссельмейер')
+astronom = Person('Астроном')
+krakatuk = Nut(100)
 
 wanderers = [Wanderer(name=i.name, things=[krakatuk]) for i in (drosselmeyer, astronom)]  # путешественники
 
@@ -25,7 +25,7 @@ pr_pirlipat.body = BodySchema().load(
 	{
 		'head': {
 			'size': ['extra_large'],
-			'appearance': ['ugly', 'beautiful'],
+			'appearance': ['ugly'],
 			'beard': {
 				'size': ['thin'],
 				'color': ['white']
@@ -51,7 +51,7 @@ for participant in participants:
 		participant.faint = True
 		print('Ну! Вот так орех!')
 else:
-	king = Human('Король')
+	king = Person('Король')
 	king.mood = Mood.grief
 	nutcracker = Participant(name='Щелкунчик', damage=300)
 	try:
